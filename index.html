@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tickets</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Ticket-System</h1>
+
+        <div class="ticket-form">
+            <input type="text" id="ticketInput" class="ticket-input" placeholder="Was ist das Problem?..." required>
+            
+            <select id="priorityInput" class="ticket-select">
+                <option value="Niedrig">Niedrig</option>
+                <option value="Normal" selected>Normal</option>
+                <option value="Hoch">Hoch</option>
+            </select>
+
+            <button onclick="addTicket()" class="add-btn">Neu</button>
+        </div>
+
+        <ul id="ticketList" class="ticket-list">
+            <li class="empty-message" id="emptyMessage">Es gibt noch keine Tickets. Alles ist super!</li>
+        </ul>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
