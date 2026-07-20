@@ -37,7 +37,7 @@ app.get('/api/tickets', async (req, res) => {
         const result = await pool.query('SELECT * FROM tickets ORDER BY erstellungsdatum DESC');
         res.json(result.rows);
     } catch (err) {
-        console.error(err);
+        console.error('Fehler bei GET /api/tickets:', err.message);
         res.status(500).json({ error: 'Serverfehler' });
     }
 });
@@ -51,7 +51,7 @@ app.post('/api/tickets', async (req, res) => {
     }
 
     try {
-        const defaultStatus = status || 'Offen';
+        const defaultStatus = status || 'Offen'; 
         const result = await pool.query(
             'INSERT INTO tickets (problem, status, prioritaet) VALUES ($1, $2, $3) RETURNING *',
             [problem, defaultStatus, prioritaet]
@@ -109,5 +109,5 @@ app.put('/api/tickets/:id/status', async (req, res) => {
 
 // server starten
 app.listen(PORT, () => {
-    console.log(`Server läuft auf http://localhost:${PORT}`);
+    console.log(`Server läuft auf Port ${PORT}`);
 });
